@@ -19,6 +19,8 @@
 
     const modal = document.getElementById("authModal");
     const form = document.getElementById("authForm");
+    const usernameInput = document.getElementById("authUsername");
+    const usernameField = document.getElementById("usernameField");
     const emailInput = document.getElementById("authEmail");
     const passwordInput = document.getElementById("authPassword");
     const title = document.getElementById("authTitle");
@@ -35,6 +37,8 @@
     let mode = "register";
 
     function showMessage(text, error = false) {
+      if (!message) return;
+
       message.textContent = text;
       message.style.color = error ? "#ff9b9b" : "#f1d995";
     }
@@ -47,7 +51,7 @@
 
       description.textContent =
         mode === "register"
-          ? "Regístrate para acceder a tu perfil de Sk7."
+          ? "Elige un nombre de usuario para tu perfil de Sk7."
           : "Ingresa con el correo y la contraseña de tu cuenta.";
 
       submit.textContent =
@@ -55,6 +59,9 @@
 
       passwordInput.autocomplete =
         mode === "register" ? "new-password" : "current-password";
+
+      usernameField.classList.toggle("hidden", mode !== "register");
+      usernameInput.required = mode === "register";
 
       switchText.textContent =
         mode === "register"
@@ -79,8 +86,22 @@
 
       const email = emailInput.value.trim();
       const password = passwordInput.value;
+      const username = usernameInput.value.trim();
+
+      if (
+        mode === "register" &&
+        !/^[A-Za-z0-9_]{3,20}$/.test(username)
+      ) {
+        showMessage(
+          "El nombre debe tener entre 3 y 20 caracteres: letras, números o guion bajo.",
+          true
+        );
+        usernameInput.focus();
+        return;
+      }
 
       submit.disabled = true;
+
       showMessage(
         mode === "register"
           ? "Creando tu cuenta..."
@@ -95,6 +116,9 @@
             email,
             password,
             options: {
+              data: {
+                username: username
+              },
               emailRedirectTo: window.location.origin
             }
           });
@@ -120,6 +144,8 @@
         if (result.data.session) {
           modal.classList.add("hidden");
           showMessage("¡Bienvenido a Sk7!");
+
+          renderSession(result.data.session.user);
         }
       } catch (error) {
         console.error("Error de autenticación:", error);
@@ -130,6 +156,8 @@
           text = "Correo o contraseña incorrectos.";
         } else if (text.toLowerCase().includes("user already registered")) {
           text = "Este correo ya está registrado. Intenta iniciar sesión.";
+        } else if (text.toLowerCase().includes("password")) {
+          text = "Revisa la contraseña. Debe cumplir los requisitos de seguridad.";
         }
 
         showMessage(text, true);
@@ -144,7 +172,12 @@
       const headerBalance = document.getElementById("headerBalance");
       const accountMessage = document.getElementById("accountMessage");
 
-      emailLabel.textContent = user.email || "Usuario de Sk7";
+      const username =
+        user.user_metadata?.username ||
+        user.email?.split("@")[0] ||
+        "Jugador";
+
+      emailLabel.textContent = username;
 
       const { data, error } = await client
         .from("profiles")
@@ -166,10 +199,13 @@
       }
 
       const formatted = Number(data.balance).toLocaleString("es-CO");
+
       profileBalance.textContent = formatted;
       headerBalance.textContent = formatted;
+
       accountMessage.textContent =
-        "Perfil conectado. Tus fichas son ficticias y no tienen valor monetario.";
+        "¡Hola, " + username +
+        "! Tu perfil está conectado. Tus fichas son ficticias y no tienen valor monetario.";
     }
 
     function renderSession(user) {
@@ -192,6 +228,7 @@
         if (error) throw error;
       } catch (error) {
         console.error("Error al cerrar sesión:", error);
+
         document.getElementById("accountMessage").textContent =
           "No se pudo cerrar la sesión. Inténtalo de nuevo.";
       } finally {
@@ -208,6 +245,7 @@
         console.error("No se pudo recuperar la sesión:", error);
         return;
       }
+
       renderSession(data.session?.user ?? null);
     });
   }

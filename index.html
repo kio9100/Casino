@@ -7,25 +7,30 @@
   <meta name="theme-color" content="#0b0b0d">
   <meta name="description" content="Sk7, tu espacio de juegos sociales con fichas ficticias.">
   <title>SK7 | Casino Social</title>
-<link rel="stylesheet" href="./css/styles.css">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./js/supabase.js" defer></script>
-<script src="./js/app.js" defer></script>
-<script src="./js/auth.js" defer></script>
+  <link rel="stylesheet" href="./css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./js/supabase.js" defer></script>
+  <script src="./js/app.js" defer></script>
+  <script src="./js/auth.js" defer></script>
+</head>
 <body>
   <header class="topbar">
     <a class="brand" href="#" aria-label="SK7 inicio">
       SK<span>7</span><small> SOCIAL CLUB</small>
     </a>
+
     <nav class="nav-links">
       <a href="#juegos">Juegos</a>
       <a href="#como-funciona">Cómo funciona</a>
     </nav>
+
     <div class="header-actions" id="guestActions">
       <button class="btn btn-quiet" data-open-auth="login">Iniciar sesión</button>
       <button class="btn btn-gold" data-open-auth="register">Crear cuenta</button>
     </div>
+
     <div class="account-actions hidden" id="userActions">
       <span class="balance-pill">◆ <b id="headerBalance">1.000</b> fichas</span>
       <button class="btn btn-quiet" id="logoutBtn">Salir</button>
@@ -37,17 +42,20 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="live-dot"></span> TU CLUB DE JUEGOS SOCIALES</div>
         <h1>La noche es tuya.<br><span>Juega a tu manera.</span></h1>
+
         <p class="intro">
           Explora juegos clásicos, disfruta cada partida y comparte
           la experiencia con tus amigos. Empieza con fichas ficticias,
           sin dinero real ni premios monetarios.
         </p>
+
         <div class="hero-actions">
           <button class="btn btn-gold btn-large" data-open-auth="register">
             Crear mi cuenta <span aria-hidden="true">↗</span>
           </button>
           <a class="btn btn-outline btn-large" href="#juegos">Descubrir juegos</a>
         </div>
+
         <div class="trust-row">
           <span>✓ Fichas ficticias</span>
           <span>✓ Juego social</span>
@@ -82,26 +90,50 @@
 
       <div class="games-grid">
         <article class="game-card">
-          <div class="game-visual roulette-visual"><span class="game-icon">✳</span><span class="visual-label">01 / CLASSIC</span></div>
-          <div class="game-info"><div><h3>Ruleta</h3><p>Elige números y colores.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <div class="game-visual roulette-visual">
+            <span class="game-icon">✳</span>
+            <span class="visual-label">01 / CLASSIC</span>
+          </div>
+          <div class="game-info">
+            <div><h3>Ruleta</h3><p>Elige números y colores.</p></div>
+            <span class="game-status">EN DESARROLLO</span>
+          </div>
           <button class="btn btn-card" disabled>Próximamente</button>
         </article>
 
         <article class="game-card">
-          <div class="game-visual blackjack-visual"><span class="game-icon">A♠</span><span class="visual-label">02 / CARDS</span></div>
-          <div class="game-info"><div><h3>Blackjack</h3><p>Acércate al 21.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <div class="game-visual blackjack-visual">
+            <span class="game-icon">A♠</span>
+            <span class="visual-label">02 / CARDS</span>
+          </div>
+          <div class="game-info">
+            <div><h3>Blackjack</h3><p>Acércate al 21.</p></div>
+            <span class="game-status">EN DESARROLLO</span>
+          </div>
           <button class="btn btn-card" disabled>Próximamente</button>
         </article>
 
         <article class="game-card">
-          <div class="game-visual slots-visual"><span class="slot-symbols">7&nbsp; ♦ &nbsp;7</span><span class="visual-label">03 / SPIN</span></div>
-          <div class="game-info"><div><h3>Tragamonedas</h3><p>Gira y descubre el resultado.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <div class="game-visual slots-visual">
+            <span class="slot-symbols">7&nbsp; ♦ &nbsp;7</span>
+            <span class="visual-label">03 / SPIN</span>
+          </div>
+          <div class="game-info">
+            <div><h3>Tragamonedas</h3><p>Gira y descubre el resultado.</p></div>
+            <span class="game-status">EN DESARROLLO</span>
+          </div>
           <button class="btn btn-card" disabled>Próximamente</button>
         </article>
 
         <article class="game-card">
-          <div class="game-visual poker-visual"><span class="game-icon">♠ ♣</span><span class="visual-label">04 / MULTIPLAYER</span></div>
-          <div class="game-info"><div><h3>Póker</h3><p>Comparte la mesa con amigos.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <div class="game-visual poker-visual">
+            <span class="game-icon">♠ ♣</span>
+            <span class="visual-label">04 / MULTIPLAYER</span>
+          </div>
+          <div class="game-info">
+            <div><h3>Póker</h3><p>Comparte la mesa con amigos.</p></div>
+            <span class="game-status">EN DESARROLLO</span>
+          </div>
           <button class="btn btn-card" disabled>Próximamente</button>
         </article>
       </div>
@@ -113,11 +145,13 @@
         <h2>¡Bienvenido a Sk7!</h2>
         <p id="userEmail"></p>
       </div>
+
       <div class="profile-balance">
         <span>Tu saldo ficticio</span>
         <strong>◆ <b id="profileBalance">1.000</b></strong>
         <small>Fichas sin valor monetario</small>
       </div>
+
       <p class="account-message" id="accountMessage" role="status"></p>
     </section>
   </main>
@@ -130,28 +164,71 @@
 
   <div class="modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <div class="modal-backdrop" data-close-auth></div>
+
     <section class="modal-card">
       <button class="modal-close" type="button" data-close-auth aria-label="Cerrar">×</button>
+
       <div class="modal-brand">SK<span>7</span></div>
       <div class="eyebrow">BIENVENIDO AL CLUB</div>
       <h2 id="authTitle">Crea tu cuenta</h2>
-      <p class="modal-description" id="authDescription">Regístrate para acceder a tu perfil de Sk7.</p>
+      <p class="modal-description" id="authDescription">
+        Regístrate para acceder a tu perfil de Sk7.
+      </p>
 
       <form id="authForm">
+        <!-- Este campo se muestra solo durante el registro -->
+        <div id="usernameField">
+          <label for="authUsername">Nombre de usuario</label>
+          <input
+            id="authUsername"
+            name="username"
+            type="text"
+            placeholder="Ej. JugadorSK7"
+            minlength="3"
+            maxlength="20"
+            autocomplete="nickname"
+            pattern="[A-Za-z0-9_]+"
+            title="Usa entre 3 y 20 letras, números o guiones bajos."
+            required
+          >
+        </div>
+
         <label for="authEmail">Correo electrónico</label>
-        <input id="authEmail" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+        <input
+          id="authEmail"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="tu@correo.com"
+          required
+        >
 
         <label for="authPassword">Contraseña</label>
-        <input id="authPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Mínimo 8 caracteres" required>
+        <input
+          id="authPassword"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          minlength="8"
+          placeholder="Mínimo 8 caracteres"
+          required
+        >
 
-        <button class="btn btn-gold submit-btn" id="authSubmit" type="submit">Crear cuenta</button>
+        <button class="btn btn-gold submit-btn" id="authSubmit" type="submit">
+          Crear cuenta
+        </button>
       </form>
 
       <p class="form-message" id="authMessage" role="status" aria-live="polite"></p>
-      <p class="switch-auth"><span id="switchText">¿Ya tienes cuenta?</span>
+
+      <p class="switch-auth">
+        <span id="switchText">¿Ya tienes cuenta?</span>
         <button type="button" class="text-button" id="switchAuthBtn">Inicia sesión</button>
       </p>
-      <p class="legal-note">Solo entretenimiento social con fichas ficticias. No se utiliza dinero real.</p>
+
+      <p class="legal-note">
+        Solo entretenimiento social con fichas ficticias. No se utiliza dinero real.
+      </p>
     </section>
   </div>
 </body>
