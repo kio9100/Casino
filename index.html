@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sk7 | Casino Social</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101010;
+      color: #f5f0e5;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 7%;
+      border-bottom: 1px solid #55431e;
+    }
+
+    .logo {
+      color: #d9b65d;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .tag {
+      color: #c5b991;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    main {
+      width: min(1000px, 90%);
+      margin: 55px auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #d9b65d;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 70px);
+      margin: 18px 0;
+    }
+
+    h1 span { color: #d9b65d; }
+
+    .intro {
+      color: #c5c0b4;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 35px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 35px 0;
+    }
+
+    .game {
+      background: #191919;
+      border: 1px solid #574522;
+      border-radius: 14px;
+      padding: 25px 10px;
+    }
+
+    .symbol {
+      font-size: 36px;
+      color: #d9b65d;
+    }
+
+    .game h2 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .game p {
+      color: #b8b1a0;
+      font-size: 12px;
+    }
+
+    button {
+      background: #d9b65d;
+      color: #15120a;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover { background: #f0d58a; }
+
+    .notice {
+      color: #99917f;
+      font-size: 12px;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 650px) {
+      .games { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 18px 5%; }
+      main { margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SK7</div>
+    <div class="tag">CASINO SOCIAL</div>
+  </header>
+
+  <main>
+    <div class="eyebrow">BIENVENIDO A SK7</div>
+    <h1>La suerte está <span>de tu lado.</span></h1>
+    <p class="intro">
+      Disfruta de tus juegos favoritos, comparte una sala
+      con tus amigos y juega desde cualquier lugar.
+      Aquí las fichas son ficticias y la diversión es real.
+    </p>
+
+    <div class="games">
+      <div class="game">
+        <div class="symbol">◉</div>
+        <h2>Ruleta</h2>
+        <p>Elige tu apuesta</p>
+      </div>
+      <div class="game">
+        <div class="symbol">♠</div>
+        <h2>Blackjack</h2>
+        <p>Acércate al 21</p>
+      </div>
+      <div class="game">
+        <div class="symbol">🎰</div>
+        <h2>Tragamonedas</h2>
+        <p>Prueba tu suerte</p>
+      </div>
+      <div class="game">
+        <div class="symbol">♣</div>
+        <h2>Póker</h2>
+        <p>Juega con amigos</p>
+      </div>
+    </div>
+
+    <button onclick="alert('¡Bienvenido a Sk7! El registro y las partidas se habilitarán en la siguiente etapa.')">
+      Explorar Sk7
+    </button>
+
+    <p class="notice">
+      Casino social · Fichas ficticias sin valor monetario
+    </p>
+  </main>
+</body>
+</html>
