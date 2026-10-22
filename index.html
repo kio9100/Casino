@@ -4,164 +4,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sk7 | Casino Social</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101010;
-      color: #f5f0e5;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 7%;
-      border-bottom: 1px solid #55431e;
-    }
-
-    .logo {
-      color: #d9b65d;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 3px;
-    }
-
-    .tag {
-      color: #c5b991;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
-
-    main {
-      width: min(1000px, 90%);
-      margin: 55px auto;
-      text-align: center;
-    }
-
-    .eyebrow {
-      color: #d9b65d;
-      letter-spacing: 4px;
-      font-size: 12px;
-    }
-
-    h1 {
-      font-size: clamp(38px, 7vw, 70px);
-      margin: 18px 0;
-    }
-
-    h1 span { color: #d9b65d; }
-
-    .intro {
-      color: #c5c0b4;
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto 35px;
-    }
-
-    .games {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin: 35px 0;
-    }
-
-    .game {
-      background: #191919;
-      border: 1px solid #574522;
-      border-radius: 14px;
-      padding: 25px 10px;
-    }
-
-    .symbol {
-      font-size: 36px;
-      color: #d9b65d;
-    }
-
-    .game h2 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .game p {
-      color: #b8b1a0;
-      font-size: 12px;
-    }
-
-    button {
-      background: #d9b65d;
-      color: #15120a;
-      border: none;
-      padding: 14px 25px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    button:hover { background: #f0d58a; }
-
-    .notice {
-      color: #99917f;
-      font-size: 12px;
-      margin-top: 35px;
-    }
-
-    @media (max-width: 650px) {
-      .games { grid-template-columns: repeat(2, 1fr); }
-      header { padding: 18px 5%; }
-      main { margin-top: 40px; }
-    }
-  </style>
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="description" content="Sk7, tu espacio de juegos sociales con fichas ficticias.">
+  <title>SK7 | Casino Social</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="logo">SK7</div>
-    <div class="tag">CASINO SOCIAL</div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="SK7 inicio">
+      SK<span>7</span><small> SOCIAL CLUB</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#juegos">Juegos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+    <div class="header-actions" id="guestActions">
+      <button class="btn btn-quiet" data-open-auth="login">Iniciar sesión</button>
+      <button class="btn btn-gold" data-open-auth="register">Crear cuenta</button>
+    </div>
+    <div class="account-actions hidden" id="userActions">
+      <span class="balance-pill">◆ <b id="headerBalance">1.000</b> fichas</span>
+      <button class="btn btn-quiet" id="logoutBtn">Salir</button>
+    </div>
   </header>
 
   <main>
-    <div class="eyebrow">BIENVENIDO A SK7</div>
-    <h1>La suerte está <span>de tu lado.</span></h1>
-    <p class="intro">
-      Disfruta de tus juegos favoritos, comparte una sala
-      con tus amigos y juega desde cualquier lugar.
-      Aquí las fichas son ficticias y la diversión es real.
-    </p>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> TU CLUB DE JUEGOS SOCIALES</div>
+        <h1>La noche es tuya.<br><span>Juega a tu manera.</span></h1>
+        <p class="intro">
+          Explora juegos clásicos, disfruta cada partida y comparte
+          la experiencia con tus amigos. Empieza con fichas ficticias,
+          sin dinero real ni premios monetarios.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-gold btn-large" data-open-auth="register">
+            Crear mi cuenta <span aria-hidden="true">↗</span>
+          </button>
+          <a class="btn btn-outline btn-large" href="#juegos">Descubrir juegos</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Fichas ficticias</span>
+          <span>✓ Juego social</span>
+          <span>✓ Sin apuestas monetarias</span>
+        </div>
+      </div>
 
-    <div class="games">
-      <div class="game">
-        <div class="symbol">◉</div>
-        <h2>Ruleta</h2>
-        <p>Elige tu apuesta</p>
+      <div class="hero-art" aria-label="Decoración de cartas y fichas">
+        <div class="art-glow"></div>
+        <div class="playing-card card-back"><span>♠</span><small>SK7</small></div>
+        <div class="playing-card card-front"><span>♛</span><strong>K</strong><small>SK7 CLUB</small></div>
+        <div class="chip chip-one">SK7</div>
+        <div class="chip chip-two">7</div>
+        <div class="art-caption">YOUR GAME. YOUR MOMENT.</div>
       </div>
-      <div class="game">
-        <div class="symbol">♠</div>
-        <h2>Blackjack</h2>
-        <p>Acércate al 21</p>
-      </div>
-      <div class="game">
-        <div class="symbol">🎰</div>
-        <h2>Tragamonedas</h2>
-        <p>Prueba tu suerte</p>
-      </div>
-      <div class="game">
-        <div class="symbol">♣</div>
-        <h2>Póker</h2>
-        <p>Juega con amigos</p>
-      </div>
-    </div>
+    </section>
 
-    <button onclick="alert('¡Bienvenido a Sk7! El registro y las partidas se habilitarán en la siguiente etapa.')">
-      Explorar Sk7
-    </button>
+    <section class="stats-strip" id="como-funciona">
+      <div><strong>01</strong><span>Crea tu cuenta</span></div>
+      <div><strong>02</strong><span>Recibe fichas ficticias</span></div>
+      <div><strong>03</strong><span>Explora los juegos</span></div>
+    </section>
 
-    <p class="notice">
-      Casino social · Fichas ficticias sin valor monetario
-    </p>
+    <section class="games-section" id="juegos">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">ELIGE TU EXPERIENCIA</div>
+          <h2>Tu próxima partida <span>empieza aquí.</span></h2>
+        </div>
+        <span class="section-note">CATÁLOGO SK7</span>
+      </div>
+
+      <div class="games-grid">
+        <article class="game-card">
+          <div class="game-visual roulette-visual"><span class="game-icon">✳</span><span class="visual-label">01 / CLASSIC</span></div>
+          <div class="game-info"><div><h3>Ruleta</h3><p>Elige números y colores.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <button class="btn btn-card" disabled>Próximamente</button>
+        </article>
+
+        <article class="game-card">
+          <div class="game-visual blackjack-visual"><span class="game-icon">A♠</span><span class="visual-label">02 / CARDS</span></div>
+          <div class="game-info"><div><h3>Blackjack</h3><p>Acércate al 21.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <button class="btn btn-card" disabled>Próximamente</button>
+        </article>
+
+        <article class="game-card">
+          <div class="game-visual slots-visual"><span class="slot-symbols">7&nbsp; ♦ &nbsp;7</span><span class="visual-label">03 / SPIN</span></div>
+          <div class="game-info"><div><h3>Tragamonedas</h3><p>Gira y descubre el resultado.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <button class="btn btn-card" disabled>Próximamente</button>
+        </article>
+
+        <article class="game-card">
+          <div class="game-visual poker-visual"><span class="game-icon">♠ ♣</span><span class="visual-label">04 / MULTIPLAYER</span></div>
+          <div class="game-info"><div><h3>Póker</h3><p>Comparte la mesa con amigos.</p></div><span class="game-status">EN DESARROLLO</span></div>
+          <button class="btn btn-card" disabled>Próximamente</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="account-panel hidden" id="accountPanel">
+      <div>
+        <div class="eyebrow">TU ESPACIO PERSONAL</div>
+        <h2>¡Bienvenido a Sk7!</h2>
+        <p id="userEmail"></p>
+      </div>
+      <div class="profile-balance">
+        <span>Tu saldo ficticio</span>
+        <strong>◆ <b id="profileBalance">1.000</b></strong>
+        <small>Fichas sin valor monetario</small>
+      </div>
+      <p class="account-message" id="accountMessage" role="status"></p>
+    </section>
   </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#">SK<span>7</span></a>
+    <p>Un espacio de entretenimiento social. Las fichas son ficticias y no se pueden canjear por dinero.</p>
+    <span>© 2026 SK7 Social Club</span>
+  </footer>
+
+  <div class="modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal-backdrop" data-close-auth></div>
+    <section class="modal-card">
+      <button class="modal-close" type="button" data-close-auth aria-label="Cerrar">×</button>
+      <div class="modal-brand">SK<span>7</span></div>
+      <div class="eyebrow">BIENVENIDO AL CLUB</div>
+      <h2 id="authTitle">Crea tu cuenta</h2>
+      <p class="modal-description" id="authDescription">Regístrate para acceder a tu perfil de Sk7.</p>
+
+      <form id="authForm">
+        <label for="authEmail">Correo electrónico</label>
+        <input id="authEmail" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+
+        <label for="authPassword">Contraseña</label>
+        <input id="authPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Mínimo 8 caracteres" required>
+
+        <button class="btn btn-gold submit-btn" id="authSubmit" type="submit">Crear cuenta</button>
+      </form>
+
+      <p class="form-message" id="authMessage" role="status" aria-live="polite"></p>
+      <p class="switch-auth"><span id="switchText">¿Ya tienes cuenta?</span>
+        <button type="button" class="text-button" id="switchAuthBtn">Inicia sesión</button>
+      </p>
+      <p class="legal-note">Solo entretenimiento social con fichas ficticias. No se utiliza dinero real.</p>
+    </section>
+  </div>
 </body>
 </html>
